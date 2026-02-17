@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart | ShopEasy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <h1 class="logo" onclick="window.location.href='index.html'">ShopEasy</h1>
+</nav>
+
+<!-- CART LAYOUT -->
+<section class="cart-layout">
+
+  <!-- LEFT: CART ITEMS -->
+  <div class="cart-left">
+    <h3 class="section-title">From Saved Addresses</h3>
+
+    <div id="cart-items" class="cart-items-box">
+      <!-- Items rendered by cart.js -->
+    </div>
+
+    <div class="place-order">
+      <button class="place-order-btn">PLACE ORDER</button>
+    </div>
+  </div>
+
+  <!-- RIGHT: PRICE DETAILS -->
+  <div class="cart-right">
+    <h3>PRICE DETAILS</h3>
+
+    <div class="price-row">
+      <span>Price (<span id="item-count">0</span> item)</span>
+      <span>₹<span id="price-total">0</span></span>
+    </div>
+
+    <div class="price-row green">
+      <span>Discount</span>
+      <span>- ₹<span id="discount">0</span></span>
+    </div>
+
+    <div class="price-row">
+      <span>Platform Fee</span>
+      <span>₹7</span>
+    </div>
+
+    <hr>
+
+    <div class="price-row total">
+      <span>Total Amount</span>
+      <span>₹<span id="final-total">0</span></span>
+    </div>
+
+    <p class="savings">
+      You will save ₹<span id="savings">0</span> on this order
+    </p>
+  </div>
+
+</section>
+
+<script src="cart.js"></script>
+</body>
+</html>
