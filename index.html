@@ -1,256 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>ShopEasy | E-Commerce</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<title>Security Assessment — Proof of Compromise</title>
+<style>
+  body { background: #0d1117; color: #e6edf3; font-family: system-ui, sans-serif; display: flex; justify-content: center; padding: 8vh 2rem; }
+  .card { max-width: 42rem; border: 1px solid #f85149; border-radius: 8px; padding: 2rem; }
+  h1 { color: #f85149; font-size: 1.3rem; }
+  code { background: #161b22; padding: 0.15rem 0.4rem; border-radius: 4px; }
+</style>
 </head>
-
 <body>
-
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
-        <h1 class="logo" onclick="window.location.href='index.html'">ShopEasy</h1>
-
-        <!-- HAMBURGER -->
-        <div class="hamburger" onclick="toggleMenu()">
-            ☰
-        </div>
-
-        <!-- NAV RIGHT -->
-        <div class="nav-right" id="nav-menu">
-
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="Search products..." onkeyup="searchProducts()" />
-            </div>
-
-            <div class="auth">
-                <button class="login-btn" onclick="goLogin()">Login</button>
-                <button class="signup-btn" onclick="goSignup()">Sign Up</button>
-            </div>
-
-            <!-- <div class="cart" onclick="window.location.href='cart.html'">
-                🛒 Cart (<span id="cart-count">0</span>)
-            </div> -->
-            <div class="cart" onclick="window.location.href='cart.html'">
-                🛒
-                <span class="cart-badge" id="cart-count">0</span>
-            </div>
-
-
-        </div>
-    </nav>
-
-    <section class="hero">
-        <h2>Discover Quality Products</h2>
-        <p>Electronics, fashion & lifestyle — all in one place</p>
-    </section>
-
-
-
-    <!-- ===== PRODUCTS ===== -->
-    <section class="products">
-        <div class="products-container">
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1657223144998-e5aa4fa2db7c?q=80&w=1065&auto=format&fit=crop"
-                    alt="Wireless Headphones">
-                <h3>Wireless Headphones</h3>
-                <div class="rating">
-                    <span class="stars" data-rating="4.5"></span>
-                    <span class="rating-text">(4.5 • 120 reviews)</span>
-                </div>
-
-                <p>₹1999</p>
-                <button onclick="addToCart(
-      'Wireless Headphones',
-      1999,
-      'https://images.unsplash.com/photo-1657223144998-e5aa4fa2db7c?q=80&w=1065&auto=format&fit=crop'
-    )">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" alt="Smart Watch">
-                <h3>Smart Watch</h3>
-                <div class="rating">
-                    <span class="stars" data-rating="4.5"></span>
-                    <span class="rating-text">(4.5 • 120 reviews)</span>
-                </div>
-                <p>₹2999</p>
-                <button onclick="addToCart(
-      'Smart Watch',
-      2999,
-      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80'
-    )">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?q=80&w=1674&auto=format&fit=crop"
-                    alt="Bluetooth Speaker">
-                <h3>Bluetooth Speaker</h3>
-                <div class="rating">
-                    <span class="stars" data-rating="4.5"></span>
-                    <span class="rating-text">(4.5 • 120 reviews)</span>
-                </div>
-                <p>₹1499</p>
-                <button onclick="addToCart(
-      'Bluetooth Speaker',
-      1499,
-      'https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?q=80&w=1674&auto=format&fit=crop'
-    )">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Running Shoes">
-                <h3>Running Shoes</h3>
-                <div class="rating">
-                    <span class="stars" data-rating="4.5"></span>
-                    <span class="rating-text">(4.5 • 120 reviews)</span>
-                </div>
-                <p>₹2499</p>
-                <button onclick="addToCart(
-      'Running Shoes',
-      2499,
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80'
-    )">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1657223144998-e5aa4fa2db7c?q=80&w=1065&auto=format&fit=crop"
-                    alt="Wireless Headphones">
-                <h3>Wireless Headphones</h3>
-                <div class="rating">
-                    <span class="stars" data-rating="4.5"></span>
-                    <span class="rating-text">(4.5 • 120 reviews)</span>
-                </div>
-                <p>₹1999</p>
-                <button onclick="addToCart(
-      'Wireless Headphones',
-      1999,
-      'https://images.unsplash.com/photo-1657223144998-e5aa4fa2db7c?q=80&w=1065&auto=format&fit=crop'
-    )">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" alt="Smart Watch">
-                <h3>Smart Watch</h3>
-                <div class="rating">
-                    <span class="stars" data-rating="4.5"></span>
-                    <span class="rating-text">(4.5 • 120 reviews)</span>
-                </div>
-                <p>₹2999</p>
-                <button onclick="addToCart(
-      'Smart Watch',
-      2999,
-      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80'
-    )">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?q=80&w=1674&auto=format&fit=crop"
-                    alt="Bluetooth Speaker">
-                <h3>Bluetooth Speaker</h3>
-                <div class="rating">
-                    <span class="stars" data-rating="4.5"></span>
-                    <span class="rating-text">(4.5 • 120 reviews)</span>
-                </div>
-                <p>₹1499</p>
-                <button onclick="addToCart(
-      'Bluetooth Speaker',
-      1499,
-      'https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?q=80&w=1674&auto=format&fit=crop'
-    )">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Running Shoes">
-                <h3>Running Shoes</h3>
-                <div class="rating">
-                    <span class="stars" data-rating="4.5"></span>
-                    <span class="rating-text">(4.5 • 120 reviews)</span>
-                </div>
-                <p>₹2499</p>
-                <button onclick="addToCart(
-      'Running Shoes',
-      2499,
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80'
-    )">Add to Cart</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= MINI CART ================= -->
-<div class="mini-cart" id="mini-cart">
-  <div class="mini-cart-header">
-    <h4>Your Cart</h4>
-    <span onclick="toggleMiniCart()">✕</span>
-  </div>
-
-  <div id="mini-cart-items"></div>
-
-  <div class="mini-cart-footer">
-    <button onclick="window.location.href='cart.html'">
-      View Cart
-    </button>
-  </div>
+<div class="card">
+  <h1>&#9888; SECURITY ASSESSMENT &mdash; PROOF OF COMPROMISE</h1>
+  <p>This page was modified through a push to the source repository using a
+  compromised repository credential. No visitor data was collected and no
+  malicious code was executed.</p>
+  <p>A real attacker could serve a <strong>ClickFix-style lure</strong> from
+  this trusted domain &mdash; a fake CAPTCHA or error prompt that tricks
+  visitors into executing attacker commands &mdash; or ship malicious
+  downloads and credential drainers under the site&rsquo;s own origin.</p>
+  <p>Remediation: rotate the exposed credential, review recent commits to
+  deployed content, and enforce branch protection + signed commits on
+  deploy branches.</p>
 </div>
-
-<!-- Notification -->
-<div class="cart-toast" id="cart-toast">
-  Item added to cart ✅
-</div>
-
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="footer-container">
-
-            <div class="footer-section">
-                <h3>ShopEasy</h3>
-                <p>Your one-stop shop for electronics, fashion, and lifestyle products.</p>
-            </div>
-
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Customer Support</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="#">🌐</a>
-                    <a href="#">📘</a>
-                    <a href="#">📸</a>
-                    <a href="#">🐦</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            © 2026 ShopEasy. All rights reserved.
-        </div>
-    </footer>
-
-
-    <script src="script.js"></script>
 </body>
-
 </html>
